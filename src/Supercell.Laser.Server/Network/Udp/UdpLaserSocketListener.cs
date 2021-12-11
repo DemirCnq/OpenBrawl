@@ -65,12 +65,21 @@
 
             BattleMode battleMode = new BattleMode();
             battleMode.Sockets.Add(socket);
-            battleMode.Players.Add(connection.UdpSessionId, new LogicPlayer(connection.UdpSessionId));
+            battleMode.Players.Add(connection.UdpSessionId, new LogicPlayer(connection.UdpSessionId)
+            {
+                Avatar = connection.Avatar,
+                SelectedCharacter = connection.Avatar.SelectedBrawler
+            });
             BattleModes.Add(battleMode);
 
             socket.BattleMode = battleMode;
-
+            
             battleMode.InitSinglePlayer();
+            
+            StartLoadingMessage message = new StartLoadingMessage(connection);
+            message.Location = Events.ActiveEvents[0].Location;
+            message.Players = battleMode.Players.Values.ToList();
+            message.Send();
         }
 
         /// <summary>
