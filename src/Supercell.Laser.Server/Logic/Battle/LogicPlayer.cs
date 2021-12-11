@@ -26,6 +26,7 @@
         internal LogicPlayer(long sessionid)
         {
             SessionId = sessionid;
+            SelectedCharacter = new LogicData(16, 0); // avoid NRE for bots
         }
     }
 }
