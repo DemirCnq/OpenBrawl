@@ -1,4 +1,4 @@
-﻿namespace Supercell.Laser.Server.Network
+namespace Supercell.Laser.Server.Network
 {
     using System;
     using System.Net;
@@ -193,16 +193,13 @@
 
                     try
                     {
-                        if (token.Connection.Socket.Available == 0)
-                        {
-                            token.Process();
+                        token.Process();
 
-                            if (!token.Aborting)
+                        if (!token.Aborting)
+                        {
+                            if (!token.Connection.Socket.ReceiveAsync(asyncEvent))
                             {
-                                if (!token.Connection.Socket.ReceiveAsync(asyncEvent))
-                                {
-                                    ServerConnection.ProcessReceive(asyncEvent);
-                                }
+                                ServerConnection.ProcessReceive(asyncEvent);
                             }
                         }
                         else
