@@ -1,6 +1,6 @@
 # OpenBrawl
 
-### DEPRECTATED!
+### DEPRECATED!
 ##### This server is deprecated. Use [RoyaleBrawl](https://github.com/xeondev1337/RoyaleBrawl) instead.
 First open source server for brawl stars with online battles for version 29.
 ### Feel free to use it but don't forget to mention me.
